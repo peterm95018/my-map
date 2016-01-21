@@ -3,7 +3,44 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
+
+(function() {
+
+
 var app = angular.module('starter', ['ionic', 'leaflet-directive']);
+
+app.config(function($stateProvider, $urlRouterProvider) {
+  
+  $stateProvider.state('map', {
+    url: '/map',
+    views: {
+      'tab-map': {
+        templateUrl: 'templates/map.html'
+      }
+    }  
+  });
+
+  $stateProvider.state('details', {
+    url: '/details',
+    views: {
+      'tab-menu': {
+        templateUrl: 'templates/details.html'
+      }
+    }
+  });
+
+  $stateProvider.state('menu', {
+    url: '/menu',
+    views: {
+      'tab-menu': {
+        templateUrl: 'templates/menu.html'
+      }
+    }
+  });
+
+    $urlRouterProvider.otherwise('/map');
+
+});
 
 app.controller('MapController', function($scope) {
     $scope.map = {
@@ -46,3 +83,5 @@ app.run(function($ionicPlatform) {
     }
   });
 })
+
+}());
