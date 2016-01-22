@@ -6,7 +6,6 @@
 
 (function() {
 
-
 var app = angular.module('starter', ['ionic', 'leaflet-directive']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
@@ -18,15 +17,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'templates/map.html'
       }
     }  
-  });
-
-  $stateProvider.state('details', {
-    url: '/details',
-    views: {
-      'tab-menu': {
-        templateUrl: 'templates/details.html'
-      }
-    }
   });
 
   $stateProvider.state('menu', {
@@ -42,6 +32,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 });
 
+app.controller('ListCtrl', function ($scope) {
+  $scope.points = [
+  {
+    title: 'item 1',
+    description: 'item 1 description',
+    lat: '36.00080',
+    lng: '-121.0070'
+  },
+    {
+    title: 'item 2',
+    description: 'item 2 description',
+    lat: '36.0080',
+    lng: '-121.0075'
+  },
+
+  ];
+});
+
+
+
 app.controller('MapController', function($scope) {
     $scope.map = {
         defaults: {
@@ -53,7 +63,16 @@ app.controller('MapController', function($scope) {
             lat: 51.505,
             lng: -0.09,
             zoom: 14
-        }
+        },
+        markers: {
+            London: {
+                lat: 51.505,
+                lng: -0.09,
+                message: "This is London. But you can drag me to another position",
+                focus: true,
+                draggable: true
+            }
+          }
     };
 
 //     angular.extend($scope, {

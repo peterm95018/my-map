@@ -1,9 +1,9 @@
-<ion-view view-title="Menu">
-	<ion-content class="padding">
-		I'm the menu or list of items
-
-
-	<a href="#/details" class="button button-block">More Details</a>
-
+<ion-view view-title="Map Points" ng-controller="ListCtrl">
+	<ion-content>
+		<ion-list class="">
+			<ion-item class="item" ng-repeat="point in points" href="#/map/{{point.lat}}/{{point.lng}}">
+			<h2>{{point.title}}</h2>
+			<p>{{point.description}} {{point.lat}} {{point.lng}}</p>
+		</ion-list>
 	</ion-content>
 </ion-view>
