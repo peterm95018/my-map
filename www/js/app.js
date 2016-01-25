@@ -10,29 +10,34 @@ var app = angular.module('starter', ['ionic', 'leaflet-directive']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
   
-  $stateProvider.state('map', {
-    url: '/map',
-    views: {
-      'tab-map': {
-        templateUrl: 'templates/map.html'
-      }
-    }  
-  });
+  // $stateProvider.state('map', {
+  //   url: '/map',
+  //   views: {
+  //     'menuContent': {
+  //       controller: 'MapController',
+  //       templateUrl: 'templates/map.html'
+  //     }
+  //   } 
+  // });
+
+$stateProvider.state('map', {
+  url: '/map',
+  templateUrl: 'templates/map.html',
+  controller: 'MapController'
+
+});
 
   $stateProvider.state('menu', {
     url: '/menu',
-    views: {
-      'tab-menu': {
-        templateUrl: 'templates/menu.html'
-      }
-    }
+    controller: 'ListController',
+    templateUrl: 'templates/menu.html'
   });
 
     $urlRouterProvider.otherwise('/map');
 
 });
 
-app.controller('ListCtrl', function ($scope) {
+app.controller('ListController', function ($scope) {
   $scope.points = [
   {
     title: 'item 1',
