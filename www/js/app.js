@@ -6,7 +6,7 @@
 
 (function() {
 
-var app = angular.module('starter', ['ionic', 'leaflet-directive']);
+var app = angular.module('mymap', ['ionic', 'leaflet-directive', 'mymap.locationsService']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
   
@@ -57,7 +57,7 @@ app.controller('ListController', function ($scope) {
 
 
 
-app.controller('MapController', function($scope) {
+app.controller('MapController', function($scope, LocationsService) {
     $scope.map = {
         defaults: {
             tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
@@ -87,6 +87,8 @@ app.controller('MapController', function($scope) {
 //         zoom: 14
 //     }
 // });
+
+$scope.locations = LocationsService.savedLocations;
 
 });
 
